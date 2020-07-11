@@ -1,3 +1,6 @@
+import Dollar from "./Dollar";
+import Franc from "./Franc";
+
 export default class Money {
   amount: number;
 
@@ -11,5 +14,15 @@ export default class Money {
       this.amount === money.amount &&
       this.constructor.name === money.constructor.name
     );
+  }
+
+  times(): Money {}
+
+  static dollar(amount: number): Dollar {
+    return new Dollar(amount);
+  }
+
+  static franc(amount: number): Franc {
+    return new Franc(amount);
   }
 }
