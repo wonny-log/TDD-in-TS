@@ -1,6 +1,3 @@
-import Dollar from "./Dollar";
-import Franc from "./Franc";
-
 export default class Money {
   _amount: number;
   currency: string;
@@ -23,11 +20,11 @@ export default class Money {
     return this._amount + " " + this.currency;
   }
 
-  static dollar(amount: number): Dollar {
-    return new Dollar(amount, "USD");
+  static dollar(amount: number): Money {
+    return new Money(amount, "USD");
   }
 
-  static franc(amount: number): Franc {
-    return new Franc(amount, "CHF");
+  static franc(amount: number): Money {
+    return new Money(amount, "CHF");
   }
 }

@@ -1,4 +1,3 @@
-import Franc from "./Franc";
 import Money from "./Money";
 
 describe("testMultiplication", () => {
@@ -43,22 +42,28 @@ describe("testEquality", () => {
   //   expect(new Dollar(5).equals(new Franc(5))).toBe(false);
   // });
 
-  test("8. 객체 만들기", () => {
+  // test("8. 객체 만들기", () => {
+  //   expect(Money.dollar(5).equals(Money.dollar(5))).toBe(true);
+  //   expect(Money.dollar(6).equals(Money.dollar(5))).toBe(false);
+  //   expect(Money.franc(5).equals(Money.franc(5))).toBe(true);
+  //   expect(Money.franc(6).equals(Money.franc(5))).toBe(false);
+  //   expect(Money.dollar(5).equals(Money.franc(5))).toBe(false);
+  // });
+
+  test("11. 모든 악의 근원", () => {
     expect(Money.dollar(5).equals(Money.dollar(5))).toBe(true);
     expect(Money.dollar(6).equals(Money.dollar(5))).toBe(false);
-    expect(Money.franc(5).equals(Money.franc(5))).toBe(true);
-    expect(Money.franc(6).equals(Money.franc(5))).toBe(false);
     expect(Money.dollar(5).equals(Money.franc(5))).toBe(false);
   });
 });
 
-describe("testFrancMultiplication", () => {
-  test("5. 솔직히 말하자면", () => {
-    const five: Franc = Money.franc(5);
-    expect(five.times(2).equals(Money.franc(10))).toBe(true);
-    expect(five.times(3).equals(Money.franc(15))).toBe(true);
-  });
-});
+// describe("testFrancMultiplication", () => {
+//   test("5. 솔직히 말하자면", () => {
+//     const five: Franc = Money.franc(5);
+//     expect(five.times(2).equals(Money.franc(10))).toBe(true);
+//     expect(five.times(3).equals(Money.franc(15))).toBe(true);
+//   });
+// });
 
 describe("testCurrency", () => {
   test("9. 우리가 사는 시간", () => {
@@ -67,8 +72,8 @@ describe("testCurrency", () => {
   });
 });
 
-describe("testDifferentClassEquality", () => {
-  test("10. 흥미로운 시간", () => {
-    expect(new Money(10, "CHF").equals(new Franc(10, "CHF"))).toBe(true);
-  });
-});
+// describe("testDifferentClassEquality", () => {
+//   test("10. 흥미로운 시간", () => {
+//     expect(new Money(10, "CHF").equals(new Franc(10, "CHF"))).toBe(true);
+//   });
+// });
