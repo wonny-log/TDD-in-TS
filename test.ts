@@ -24,9 +24,17 @@ describe("testMultiplication", () => {
 });
 
 describe("testEquality", () => {
-  test("3. 모두를 위한 평등", () => {
+  // test("3. 모두를 위한 평등", () => {
+  //   expect(new Dollar(5).equals(new Dollar(5))).toBe(true);
+  //   expect(new Dollar(6).equals(new Dollar(5))).toBe(false);
+  // });
+
+  test("7. 사과와 오렌지", () => {
     expect(new Dollar(5).equals(new Dollar(5))).toBe(true);
     expect(new Dollar(6).equals(new Dollar(5))).toBe(false);
+    expect(new Franc(5).equals(new Franc(5))).toBe(true);
+    expect(new Franc(6).equals(new Franc(5))).toBe(false);
+    expect(new Dollar(5).equals(new Franc(5))).toBe(false);
   });
 });
 
