@@ -1,16 +1,16 @@
 export default class Dollar {
-  amount: number;
+  _amount: number;
 
   constructor(amount: number) {
-    this.amount = amount;
+    this._amount = amount;
   }
 
   times(multiplier: number): Dollar {
-    return new Dollar(this.amount * multiplier);
+    return new Dollar(this._amount * multiplier);
   }
 
   equals(object: Object): boolean {
     const dollar: Dollar = object as Dollar;
-    return this.amount === dollar.amount;
+    return this._amount === dollar._amount;
   }
 }
