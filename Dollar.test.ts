@@ -15,3 +15,10 @@ describe("testMultiplication", () => {
     expect(product.amount).toBe(15);
   });
 });
+
+describe("testEquality", () => {
+  test("3. 모두를 위한 평등", () => {
+    expect(new Dollar(5).equals(new Dollar(5))).toBe(true);
+    expect(new Dollar(6).equals(new Dollar(5))).toBe(false);
+  });
+});
