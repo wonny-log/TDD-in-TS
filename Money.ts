@@ -1,29 +1,34 @@
 import Expression from "./Expression";
+import Sum from "./Sum";
 
 export default class Money implements Expression {
-  _amount: number;
+  amount: number;
   currency: string;
 
   constructor(amount: number, currency: string) {
-    this._amount = amount;
+    this.amount = amount;
     this.currency = currency;
   }
 
   equals(object: Object): boolean {
     const money: Money = object as Money;
-    return this._amount === money._amount && this.currency === money.currency;
+    return this.amount === money.amount && this.currency === money.currency;
   }
 
   times(multiplier: number): Money {
-    return new Money(this._amount * multiplier, this.currency);
+    return new Money(this.amount * multiplier, this.currency);
   }
 
   toString(): string {
-    return this._amount + " " + this.currency;
+    return this.amount + " " + this.currency;
   }
 
   plus(addend: Money): Expression {
-    return new Money(this._amount + addend._amount, this.currency);
+    return new Sum(this, addend);
+  }
+
+  reduce(to: string): Money {
+    return this;
   }
 
   static dollar(amount: number): Money {

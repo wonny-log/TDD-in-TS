@@ -1,6 +1,7 @@
 import Money from "./Money";
 import Expression from "./Expression";
 import Bank from "./Bank";
+import Sum from "./Sum";
 
 describe("testMultiplication", () => {
   // test("1. 다중 통화를 지원하는 Money 객체", () => {
@@ -87,5 +88,22 @@ describe("testSimpleAddition", () => {
     const bank: Bank = new Bank();
     const reduced: Money = bank.reduce(sum, "USD");
     expect(reduced.equals(Money.dollar(10))).toBe(true);
+  });
+});
+
+describe("testReduceSum", () => {
+  test("13. 진짜로 만들기", () => {
+    const sum: Expression = new Sum(Money.dollar(3), Money.dollar(4));
+    const bank: Bank = new Bank();
+    const result: Money = bank.reduce(sum, "USD");
+    expect(result.equals(Money.dollar(7))).toBe(true);
+  });
+});
+
+describe("testReduceMoney", () => {
+  test("13. 진짜로 만들기", () => {
+    const bank: Bank = new Bank();
+    const result: Money = bank.reduce(Money.dollar(1), "USD");
+    expect(result.equals(Money.dollar(1))).toBe(true);
   });
 });
