@@ -4,5 +4,5 @@ import Bank from "./Bank";
 export default interface Expression {
   reduce(bank: Bank, to: string): Money;
   plus(addend: Expression): Expression;
-  equlas(object: Object): boolean;
+  times(multiplier: number): Expression;
 }
