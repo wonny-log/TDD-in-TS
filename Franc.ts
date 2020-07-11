@@ -1,16 +1,11 @@
-export default class Franc {
-  _amount: number;
+import Money from "./Money";
 
+export default class Franc extends Money {
   constructor(amount: number) {
-    this._amount = amount;
+    super(amount);
   }
 
   times(multiplier: number): Franc {
-    return new Franc(this._amount * multiplier);
-  }
-
-  equals(object: Object): boolean {
-    const franc: Franc = object as Franc;
-    return this._amount === franc._amount;
+    return new Franc(this.amount * multiplier);
   }
 }
