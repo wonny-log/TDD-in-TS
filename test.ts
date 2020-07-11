@@ -1,4 +1,6 @@
 import Money from "./Money";
+import Expression from "./Expression";
+import Bank from "./Bank";
 
 describe("testMultiplication", () => {
   // test("1. 다중 통화를 지원하는 Money 객체", () => {
@@ -77,3 +79,13 @@ describe("testCurrency", () => {
 //     expect(new Money(10, "CHF").equals(new Franc(10, "CHF"))).toBe(true);
 //   });
 // });
+
+describe("testSimpleAddition", () => {
+  test("12. 드디어, 더하기", () => {
+    const five: Money = Money.dollar(5);
+    const sum: Expression = five.plus(five);
+    const bank: Bank = new Bank();
+    const reduced: Money = bank.reduce(sum, "USD");
+    expect(reduced.equals(Money.dollar(10))).toBe(true);
+  });
+});
