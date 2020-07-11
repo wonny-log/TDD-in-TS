@@ -1,4 +1,3 @@
-import Dollar from "./Dollar";
 import Franc from "./Franc";
 import Money from "./Money";
 
@@ -58,5 +57,12 @@ describe("testFrancMultiplication", () => {
     const five: Franc = Money.franc(5);
     expect(five.times(2).equals(Money.franc(10))).toBe(true);
     expect(five.times(3).equals(Money.franc(15))).toBe(true);
+  });
+});
+
+describe("testCurrency", () => {
+  test("9. 우리가 사는 시간", () => {
+    expect(Money.dollar(1).currency()).toBe("USD");
+    expect(Money.franc(1).currency()).toBe("CHF");
   });
 });
