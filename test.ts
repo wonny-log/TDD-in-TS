@@ -81,32 +81,32 @@ describe("testCurrency", () => {
 //   });
 // });
 
-describe("testSimpleAddition", () => {
-  test("12. 드디어, 더하기", () => {
-    const five: Money = Money.dollar(5);
-    const sum: Expression = five.plus(five);
-    const bank: Bank = new Bank();
-    const reduced: Money = bank.reduce(sum, "USD");
-    expect(reduced.equals(Money.dollar(10))).toBe(true);
-  });
-});
+// describe("testSimpleAddition", () => {
+//   test("12. 드디어, 더하기", () => {
+//     const five: Money = Money.dollar(5);
+//     const sum: Expression = five.plus(five);
+//     const bank: Bank = new Bank();
+//     const reduced: Money = bank.reduce(sum, "USD");
+//     expect(reduced.equals(Money.dollar(10))).toBe(true);
+//   });
+// });
 
-describe("testReduceSum", () => {
-  test("13. 진짜로 만들기", () => {
-    const sum: Expression = new Sum(Money.dollar(3), Money.dollar(4));
-    const bank: Bank = new Bank();
-    const result: Money = bank.reduce(sum, "USD");
-    expect(result.equals(Money.dollar(7))).toBe(true);
-  });
-});
+// describe("testReduceSum", () => {
+//   test("13. 진짜로 만들기", () => {
+//     const sum: Expression = new Sum(Money.dollar(3), Money.dollar(4));
+//     const bank: Bank = new Bank();
+//     const result: Money = bank.reduce(sum, "USD");
+//     expect(result.equals(Money.dollar(7))).toBe(true);
+//   });
+// });
 
-describe("testReduceMoney", () => {
-  test("13. 진짜로 만들기", () => {
-    const bank: Bank = new Bank();
-    const result: Money = bank.reduce(Money.dollar(1), "USD");
-    expect(result.equals(Money.dollar(1))).toBe(true);
-  });
-});
+// describe("testReduceMoney", () => {
+//   test("13. 진짜로 만들기", () => {
+//     const bank: Bank = new Bank();
+//     const result: Money = bank.reduce(Money.dollar(1), "USD");
+//     expect(result.equals(Money.dollar(1))).toBe(true);
+//   });
+// });
 
 // describe("testReduceMoneyDifferentCurrency", () => {
 //   test("14. 바꾸기", () => {
@@ -126,5 +126,21 @@ describe("testArrayEquals", () => {
 describe("testIdentityRate", () => {
   test("14. 바꾸기", () => {
     expect(new Bank().rate("USD", "USD")).toBe(1);
+  });
+});
+
+describe("testMixedAddition", () => {
+  test("15. 서로 다른 통화 더하기", () => {
+    const fiveBucks: Expression = Money.dollar(5);
+    const tenFrancs: Expression = Money.franc(10);
+
+    const bank: Bank = new Bank();
+    bank.addRate("CHF", "USD", 2);
+
+    const result: Money = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+
+    console.log(result);
+
+    expect(result.equals(Money.dollar(10))).toBe(true);
   });
 });
