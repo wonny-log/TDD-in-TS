@@ -107,3 +107,24 @@ describe("testReduceMoney", () => {
     expect(result.equals(Money.dollar(1))).toBe(true);
   });
 });
+
+// describe("testReduceMoneyDifferentCurrency", () => {
+//   test("14. 바꾸기", () => {
+//     const bank: Bank = new Bank();
+//     bank.addRate("CHF", "USD", 2);
+//     const result: Money = bank.reduce(Money.franc(2), "USD");
+//     expect(result.equals(Money.dollar(1))).toBe(true);
+//   });
+// });
+
+describe("testArrayEquals", () => {
+  test("14. 바꾸기", () => {
+    expect(["abc"] === ["abc"]).toBe(false);
+  });
+});
+
+describe("testIdentityRate", () => {
+  test("14. 바꾸기", () => {
+    expect(new Bank().rate("USD", "USD")).toBe(1);
+  });
+});

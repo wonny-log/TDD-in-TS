@@ -1,0 +1,18 @@
+export default class Pair {
+  from: string;
+  to: string;
+
+  constructor(from: string, to: string) {
+    this.from = from;
+    this.to = to;
+  }
+
+  equals(object: Object) {
+    const pair: Pair = object as Pair;
+    return this.from === pair.from && this.to === pair.to;
+  }
+
+  hashCode() {
+    return 0;
+  }
+}
