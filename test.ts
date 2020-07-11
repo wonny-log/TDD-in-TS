@@ -62,7 +62,13 @@ describe("testFrancMultiplication", () => {
 
 describe("testCurrency", () => {
   test("9. 우리가 사는 시간", () => {
-    expect(Money.dollar(1).currency()).toBe("USD");
-    expect(Money.franc(1).currency()).toBe("CHF");
+    expect(Money.dollar(1).currency).toBe("USD");
+    expect(Money.franc(1).currency).toBe("CHF");
+  });
+});
+
+describe("testDifferentClassEquality", () => {
+  test("10. 흥미로운 시간", () => {
+    expect(new Money(10, "CHF").equals(new Franc(10, "CHF"))).toBe(true);
   });
 });

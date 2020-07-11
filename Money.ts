@@ -3,25 +3,24 @@ import Franc from "./Franc";
 
 export default class Money {
   _amount: number;
-  _currency: string;
+  currency: string;
 
   constructor(amount: number, currency: string) {
     this._amount = amount;
-    this._currency = currency;
+    this.currency = currency;
   }
 
   equals(object: Object): boolean {
     const money: Money = object as Money;
-    return (
-      this._amount === money._amount &&
-      this.constructor.name === money.constructor.name
-    );
+    return this._amount === money._amount && this.currency === money.currency;
   }
 
-  times(): Money {}
+  times(multiplier: number): Money {
+    return new Money(this._amount * multiplier, this.currency);
+  }
 
-  get currency(): string {
-    return this.currency;
+  toString(): string {
+    return this._amount + " " + this.currency;
   }
 
   static dollar(amount: number): Dollar {
